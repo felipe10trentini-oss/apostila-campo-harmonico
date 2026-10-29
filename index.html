@@ -71,6 +71,17 @@ details.day .body{padding:0 14px 12px}
 .ready{font-size:.9rem;color:var(--muted)}
 ol{padding-left:22px;margin:6px 0} li{margin:3px 0}
 ul.plain{padding-left:20px;margin:6px 0}
+h3{margin:18px 0 6px;font-size:1.05rem}
+#circ{width:100%;max-width:340px;display:block;margin:8px auto}
+#circ text{pointer-events:none}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.pairs div{border-radius:10px;padding:8px;text-align:center;font-weight:800}
+.pairs .pM{background:var(--maior-soft)} .pairs .pm{background:var(--menor-soft)}
+.pairs small{display:block;font-weight:700;opacity:.75}
+.flash{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.flashkey{font-size:1.6rem;font-weight:800}
+.flans{min-height:1.6em;font-weight:700;margin:8px 0}
+.flash .row{justify-content:center}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px}
 </style>
 </head>
@@ -80,7 +91,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
   <p>Teclado sabendo só o tom. 20 minutos por dia, pouca teoria, muita prática.</p>
 </header>
 <nav>
-  <a href="#regra">A regra</a><a href="#tom">Meu tom</a><a href="#dias">7 dias</a><a href="#ouvido">Treino de ouvido</a><a href="#quiz">Quiz</a><a href="#cola">Cola</a>
+  <a href="#regra">A regra</a><a href="#decorar">Como decorar</a><a href="#tom">Meu tom</a><a href="#dias">7 dias</a><a href="#ouvido">Treino de ouvido</a><a href="#quiz">Quiz</a><a href="#cola">Cola</a>
 </nav>
 <main>
 
@@ -90,6 +101,33 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
   <div class="big"><span class="M">1</span> · <span class="m">2m</span> · <span class="m">3m</span> · <span class="M">4</span> · <span class="M">5</span> · <span class="m">6m</span></div>
   <p><b><span class="M">1, 4 e 5 são maiores.</span> <span class="m">2, 3 e 6 são menores.</span></b> Pronto. Mudou o tom, só muda o acorde 1; os números continuam iguais.</p>
   <p class="hint">Exemplo: <code>1 5 6m 4</code> em Dó = C G Am F · em Sol = G D Em C · em Ré = D A Bm G.</p>
+</section>
+
+<section id="decorar">
+  <h2>Como decorar em 3 passos</h2>
+  <p>Você não decora tabela. Decora <b>uma fila</b> e deduz o resto em 2 segundos.</p>
+  <ol>
+    <li><b>Decore só a fila:</b> <code>C G D A E B F# Db Ab Eb Bb F</code>. É um círculo: depois do F volta ao C.</li>
+    <li><b>Os vizinhos são o 4 e o 5:</b> o de antes na fila é o <b>4</b>, o de depois é o <b>5</b>.</li>
+    <li><b>Os menores são os relativos</b> (3 semitons abaixo, contando as pretas): do 1 sai o <b>6m</b>, do 4 sai o <b>2m</b>, do 5 sai o <b>3m</b>.</li>
+  </ol>
+  <svg id="circ" viewBox="-12 -12 324 324" role="img" aria-label="Círculo dos tons com os relativos menores"></svg>
+  <p class="hint" style="text-align:center">Toque num tom do círculo. Anel de fora: maiores. Anel de dentro: relativos menores.</p>
+  <div class="pairs" id="pairs"></div>
+
+  <h3>Treino de memória (5 min por dia)</h3>
+  <p class="hint">Veja o tom, diga os 6 acordes em voz alta e só depois toque em Mostrar. Os tons que você errar aparecem mais vezes até você acertar.</p>
+  <div class="flash">
+    <div class="flashkey" id="flKey"></div>
+    <div class="flans" id="flAns"></div>
+    <div class="row">
+      <button class="btn" type="button" id="flShow">Mostrar</button>
+      <button class="btn" type="button" id="flOk" hidden>Acertei</button>
+      <button class="btn ghost" type="button" id="flBad" hidden>Errei</button>
+    </div>
+    <p class="hint" id="flRev"></p>
+  </div>
+  <p class="hint">Revise no dia seguinte, depois em 3 dias e depois em 1 semana. E sempre toque <code>1 5 6m 4</code> no tom que acabou de deduzir: a mão ajuda a memória.</p>
 </section>
 
 <section id="tom">
@@ -113,6 +151,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
         <li><input type="checkbox"><span>Toque <code>1 4 5 1</code> em <b>C, G e D</b>, falando "um, quatro, cinco, um" em voz alta.</span></li>
         <li><input type="checkbox"><span>Toque "Parabéns pra você" (usa só 1, 5 e 4) em C e depois em G.</span></li>
         <li><input type="checkbox"><span>Treino de ouvido, nível <b>1 e 5</b>: 10 acertos.</span></li>
+        <li><input type="checkbox"><span>Decore a fila <code>C G D A E B F# Db Ab Eb Bb F</code> e faça 5 min do treino de memória ("Como decorar").</span></li>
       </ul>
       <p class="ready">Pronto quando: toca 1 4 5 1 nos 3 tons sem olhar.</p>
     </div>
@@ -211,6 +250,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
         <li><input type="checkbox"><span>Treino de ouvido nível <b>Todos</b> com tom aleatório: 10 minutos.</span></li>
         <li><input type="checkbox"><span><code>1 5 6m 4</code> nos 12 tons: C G D A E B F# Db Ab Eb Bb F.</span></li>
         <li><input type="checkbox"><span>Quiz: 9 de 10 acertos.</span></li>
+        <li><input type="checkbox"><span>Treino de memória até não sobrar nenhum tom para revisar.</span></li>
       </ul>
     </div>
   </details>
@@ -296,7 +336,8 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
   function renderKeys(){var box=$('keys');box.innerHTML='';
     KEYS.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.textContent=k.n;
       if(k===cur) b.className='on';
-      b.onclick=function(){cur=k;save('tom',i);renderKeys();renderChords();updateEarKey();};box.appendChild(b);});}
+      b.onclick=function(){setKey(i);};box.appendChild(b);});}
+  function setKey(i){cur=KEYS[i];save('tom',i);renderKeys();renderChords();updateEarKey();renderCircle();}
   function renderChords(){var box=$('chords');box.innerHTML='';
     DEG.forEach(function(d,i){var el=document.createElement('div');
       el.className='chord '+(d.m?'m':'M')+(i===selDeg?' sel':'');
@@ -315,6 +356,46 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
     var names=[r,r+(d.m?3:4),r+7].map(function(x){return nm(cur,x);});
     $('kbinfo').textContent=chord(cur,selDeg)+' ('+d.n+' de '+cur.n+'): '+names.join(' – ');
   }
+
+  /* ---------- como decorar: círculo ---------- */
+  function rel(k){return nm(k,k.pc+9)+'m';}
+  function renderCircle(){
+    var ci=KEYS.indexOf(cur),L=(ci+11)%12,R=(ci+1)%12,s='';
+    KEYS.forEach(function(k,i){
+      var a=(i*30-90)*Math.PI/180,c=Math.cos(a),n=Math.sin(a);
+      var role=i===ci?'1':i===L?'4':i===R?'5':'',mrole=i===ci?'6m':i===L?'2m':i===R?'3m':'';
+      var x=150+112*c,y=150+112*n,xi=150+70*c,yi=150+70*n;
+      s+='<g data-i="'+i+'" style="cursor:pointer">'+
+        '<circle cx="'+x+'" cy="'+y+'" r="23" fill="'+(i===ci?'var(--accent)':role?'var(--maior-soft)':'var(--bg)')+'" stroke="var(--line)"/>'+
+        '<text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" font-size="15" font-weight="800" fill="'+(i===ci?'var(--card)':'var(--text)')+'">'+k.n+'</text>'+
+        '<circle cx="'+xi+'" cy="'+yi+'" r="18" fill="'+(mrole?'var(--menor-soft)':'var(--card)')+'" stroke="var(--line)"/>'+
+        '<text x="'+xi+'" y="'+(yi+4)+'" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">'+rel(k)+'</text></g>';
+      if(role){var xr=150+146*c,yr=150+146*n;
+        s+='<text x="'+xr+'" y="'+(yr+4)+'" text-anchor="middle" font-size="12" font-weight="800" fill="var(--maior)">'+role+'</text>';
+        var xm=150+40*c,ym=150+40*n;
+        s+='<text x="'+xm+'" y="'+(ym+4)+'" text-anchor="middle" font-size="11" font-weight="800" fill="var(--menor)">'+mrole+'</text>';}
+    });
+    $('circ').innerHTML=s;
+    var P=[[ci,'1','6m'],[L,'4','2m'],[R,'5','3m']];
+    $('pairs').innerHTML=P.map(function(p){var k=KEYS[p[0]];
+      return '<div class="pM"><small>'+p[1]+'</small>'+k.n+'</div><div class="pm"><small>'+p[2]+'</small>'+rel(k)+'</div>';}).join('');
+  }
+  $('circ').onclick=function(e){var g=e.target.closest&&e.target.closest('g[data-i]');if(g)setKey(+g.getAttribute('data-i'));};
+
+  /* ---------- como decorar: treino de memória ---------- */
+  var fw=load('flash',{}),flI=-1;
+  function wt(i){return fw[i]||1;}
+  function newFlash(){var tot=0,i;for(i=0;i<12;i++)if(i!==flI)tot+=wt(i);
+    var r=Math.random()*tot;for(i=0;i<12;i++){if(i===flI)continue;r-=wt(i);if(r<=0)break;}
+    flI=Math.min(i,11);$('flKey').textContent='Tom de '+KEYS[flI].n;$('flAns').textContent='';
+    $('flShow').hidden=false;$('flOk').hidden=true;$('flBad').hidden=true;
+    var rev=KEYS.filter(function(k,j){return wt(j)>1;}).map(function(k){return k.n;});
+    $('flRev').textContent=rev.length?'Para revisar: '+rev.join(', '):'Nenhum tom pendente de revisão.';}
+  $('flShow').onclick=function(){var k=KEYS[flI];
+    $('flAns').textContent=DEG.map(function(d,j){return d.n+' '+chord(k,j);}).join(' · ');
+    $('flShow').hidden=true;$('flOk').hidden=false;$('flBad').hidden=false;};
+  $('flOk').onclick=function(){fw[flI]=Math.max(1,wt(flI)/2);if(fw[flI]<=1)delete fw[flI];save('flash',fw);newFlash();};
+  $('flBad').onclick=function(){fw[flI]=Math.min(8,wt(flI)+3);save('flash',fw);newFlash();};
 
   /* ---------- 7 dias ---------- */
   var checks=load('checks7',{});
@@ -379,7 +460,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px
   function showScore(){$('qScore').textContent=qs.tot?qs.ok+' de '+qs.tot+' acertos':'';}
   $('qReset').onclick=function(){qs={ok:0,tot:0};save('quiz',qs);showScore();};
 
-  renderKeys();renderChords();renderLevels();updateEarKey();renderEarAns();newQ();showScore();
+  renderKeys();renderChords();renderCircle();newFlash();renderLevels();updateEarKey();renderEarAns();newQ();showScore();
 })();
 </script>
 </body>
