@@ -3,318 +3,383 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Campo Harmônico de Ouvido</title>
-<meta name="description" content="Apostila para tocar teclado de ouvido sabendo só o tom: campo harmônico, progressões, exercícios e plano de 8 semanas.">
+<title>De Ouvido em 7 Dias</title>
+<meta name="description" content="Curso prático para tocar teclado de ouvido sabendo só o tom: 7 dias de treino, acordes de qualquer tom, treino de ouvido e quiz.">
 <meta name="theme-color" content="#1f3a5f">
 <style>
 :root{
   --bg:#f7f6f2; --card:#ffffff; --text:#1d1d1f; --muted:#5f6368; --line:#e2e0da;
-  --accent:#1f3a5f; --accent-soft:#e6edf6; --maior:#1f6f43; --menor:#8a3b12; --dim:#6b4fa0;
+  --accent:#1f3a5f; --accent-soft:#e6edf6; --maior:#1f6f43; --maior-soft:#e3f3ea; --menor:#8a3b12; --menor-soft:#fbeee4;
+  --ok:#1f6f43; --bad:#b3261e; --key-on:#2f6fd0;
 }
 @media (prefers-color-scheme: dark){
   :root{ --bg:#121417; --card:#1b1e23; --text:#e8e8ea; --muted:#a0a4ab; --line:#2c3037;
-    --accent:#8fb4e6; --accent-soft:#1f2a38; --maior:#6fcf97; --menor:#f2a36b; --dim:#b9a2f0; }
+    --accent:#8fb4e6; --accent-soft:#1f2a38; --maior:#6fcf97; --maior-soft:#173326; --menor:#f2a36b; --menor-soft:#3a2516;
+    --ok:#6fcf97; --bad:#ff8a80; --key-on:#5b9bf0; }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:var(--accent);color:#fff;padding:28px 16px 22px}
-@media (prefers-color-scheme: dark){header{background:#1f3a5f}}
-header h1{margin:0 0 6px;font-size:1.6rem;line-height:1.2}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:#1f3a5f;color:#fff;padding:24px 16px 20px}
+header h1{margin:0 0 4px;font-size:1.55rem;line-height:1.2}
 header p{margin:0;opacity:.9;font-size:.95rem}
-nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-nav a{display:inline-block;padding:12px 12px;color:var(--accent);text-decoration:none;font-size:.9rem;font-weight:600}
-main{max-width:760px;margin:0 auto;padding:8px 16px 60px}
-section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin:18px 0;scroll-margin-top:56px}
-h2{margin:0 0 10px;font-size:1.3rem;color:var(--accent)}
-h3{margin:22px 0 8px;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav a{display:inline-block;padding:12px;color:var(--accent);text-decoration:none;font-size:.92rem;font-weight:600}
+main{max-width:720px;margin:0 auto;padding:4px 16px 50px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0;scroll-margin-top:52px}
+h2{margin:0 0 8px;font-size:1.25rem;color:var(--accent)}
 p{margin:8px 0}
-code{background:var(--accent-soft);padding:2px 6px;border-radius:6px;font-size:.92em;white-space:nowrap}
-.formula{font-size:1.05rem;font-weight:700;background:var(--accent-soft);border-radius:10px;padding:12px;text-align:center;margin:12px 0}
-.M{color:var(--maior)} .m{color:var(--menor)} .d{color:var(--dim)}
-.tip{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 12px;border-radius:0 10px 10px 0;margin:12px 0}
-.table{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0;border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;font-size:.92rem}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{background:var(--accent-soft);font-weight:700}
-tr:last-child td{border-bottom:0}
-td.wrap,th.wrap{white-space:normal;min-width:180px}
-ul,ol{padding-left:22px;margin:8px 0}
-li{margin:5px 0}
-.checks{list-style:none;padding-left:0}
+code{background:var(--accent-soft);padding:2px 6px;border-radius:6px;font-size:.95em;white-space:nowrap}
+.big{font-size:1.1rem;font-weight:700;text-align:center;background:var(--accent-soft);border-radius:10px;padding:12px;margin:10px 0}
+.M{color:var(--maior)} .m{color:var(--menor)}
+.keys{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.keys button,.chips button{font:inherit;font-weight:700;padding:9px 0;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+.keys button.on{background:var(--accent);color:var(--card);border-color:var(--accent)}
+.chords{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.chord{border-radius:12px;padding:10px 6px;text-align:center;border:2px solid transparent;cursor:pointer;user-select:none}
+.chord.M{background:var(--maior-soft)} .chord.m{background:var(--menor-soft)}
+.chord.sel{border-color:var(--key-on)}
+.chord .deg{font-size:.85rem;font-weight:700;opacity:.85}
+.chord .nm{font-size:1.5rem;font-weight:800;color:var(--text)}
+.chord .fl{font-size:.75rem;color:var(--muted)}
+.kb{width:100%;height:auto;display:block;margin:6px 0}
+.hint{color:var(--muted);font-size:.88rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.btn{font:inherit;font-weight:700;padding:11px 16px;border-radius:10px;border:0;background:var(--accent);color:var(--card)}
+.btn.ghost{background:var(--accent-soft);color:var(--accent)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{padding:7px 12px;font-size:.9rem}
+.chips button.on{background:var(--accent);color:var(--card);border-color:var(--accent)}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:10px 0}
+.answers button{font:inherit;font-weight:800;font-size:1.05rem;padding:14px 6px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+.answers button.ok{background:var(--ok);color:var(--card);border-color:var(--ok)}
+.answers button.bad{background:var(--bad);color:var(--card);border-color:var(--bad)}
+.q{font-size:1.1rem;font-weight:700;margin:8px 0}
+.fb{min-height:1.5em;font-weight:700}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)}
+.score{color:var(--muted);font-size:.9rem}
+details.day{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--bg)}
+details.day summary{padding:12px 14px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details.day summary::-webkit-details-marker{display:none}
+details.day .body{padding:0 14px 12px}
+.prog{font-size:.8rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.done .prog{color:var(--ok)}
+.rule{border-left:4px solid var(--accent);background:var(--accent-soft);padding:8px 12px;border-radius:0 10px 10px 0;margin:8px 0}
+.checks{list-style:none;padding:0;margin:8px 0}
 .checks li{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
-.checks input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--accent)}
-details{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:14px 0;background:var(--bg)}
-summary{cursor:pointer;font-weight:700;color:var(--accent)}
-.ex{background:var(--bg);border-radius:10px;padding:10px 12px;margin:10px 0}
-.ex b{color:var(--accent)}
-.reset{margin-top:6px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;font-size:.85rem}
+.checks input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--accent)}
+.ready{font-size:.9rem;color:var(--muted)}
+ol{padding-left:22px;margin:6px 0} li{margin:3px 0}
+ul.plain{padding-left:20px;margin:6px 0}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px}
-a{color:var(--accent)}
 </style>
 </head>
 <body>
 <header>
-  <h1>Campo Harmônico para Tocar de Ouvido</h1>
-  <p>Apostila para decorar e tocar teclado sabendo só o tom.</p>
+  <h1>De Ouvido em 7 Dias</h1>
+  <p>Teclado sabendo só o tom. 20 minutos por dia, pouca teoria, muita prática.</p>
 </header>
 <nav>
-  <a href="#uso">Como usar</a><a href="#formula">Fórmula</a><a href="#tons">12 tons</a><a href="#progressoes">Progressões</a><a href="#menor">Tom menor</a><a href="#ouvido">De ouvido</a><a href="#exercicios">Exercícios</a><a href="#plano">Plano</a><a href="#cola">Cola</a>
+  <a href="#regra">A regra</a><a href="#tom">Meu tom</a><a href="#dias">7 dias</a><a href="#ouvido">Treino de ouvido</a><a href="#quiz">Quiz</a><a href="#cola">Cola</a>
 </nav>
 <main>
 
-<section id="uso">
-  <h2>Como usar esta apostila</h2>
-  <p>O segredo para não se perder quando o tom muda é parar de decorar nomes de acordes e passar a pensar em <b>números (graus)</b>. Uma música não é "C – G – Am – F"; ela é "1 – 5 – 6m – 4". Em qualquer tom, os números são os mesmos — só muda a tônica.</p>
-  <p>Você já tem a mão no teclado. O que falta é o mapa, em 4 passos:</p>
-  <ol>
-    <li><b>Decorar a fórmula</b> do campo harmônico maior (uma linha só).</li>
-    <li><b>Decorar os acordes do campo</b> nos tons mais usados, começando pelos fáceis.</li>
-    <li><b>Reconhecer as progressões</b> que se repetem em quase toda música popular.</li>
-    <li><b>Treinar o ouvido</b> para ouvir "isso é o 4" ou "isso é o 6m", em vez de "isso é Fá".</li>
-  </ol>
-  <div class="tip"><b>Regra de ouro:</b> toda cifra que você tocar daqui para frente, traduza mentalmente para números. Esse hábito sozinho resolve metade do problema de transposição.</div>
+<section id="regra">
+  <h2>A única coisa para decorar</h2>
+  <p>Pare de pensar em nomes de acordes. Pense em <b>números</b>. Em qualquer tom, os acordes são estes 6:</p>
+  <div class="big"><span class="M">1</span> · <span class="m">2m</span> · <span class="m">3m</span> · <span class="M">4</span> · <span class="M">5</span> · <span class="m">6m</span></div>
+  <p><b><span class="M">1, 4 e 5 são maiores.</span> <span class="m">2, 3 e 6 são menores.</span></b> Pronto. Mudou o tom, só muda o acorde 1; os números continuam iguais.</p>
+  <p class="hint">Exemplo: <code>1 5 6m 4</code> em Dó = C G Am F · em Sol = G D Em C · em Ré = D A Bm G.</p>
 </section>
 
-<section id="formula">
-  <h2>1. A fórmula do campo maior</h2>
-  <p>O campo harmônico maior são os 7 acordes formados com as notas da escala maior. A ordem é sempre a mesma:</p>
-  <div class="formula"><span class="M">MAIOR</span> – <span class="m">menor</span> – <span class="m">menor</span> – <span class="M">MAIOR</span> – <span class="M">MAIOR</span> – <span class="m">menor</span> – <span class="d">diminuto</span></div>
-  <div class="table"><table>
-    <tr><th>Grau</th><th>1</th><th>2m</th><th>3m</th><th>4</th><th>5</th><th>6m</th><th>7°</th></tr>
-    <tr><td>Romano</td><td>I</td><td>ii</td><td>iii</td><td>IV</td><td>V</td><td>vi</td><td>vii°</td></tr>
-    <tr><td>Tipo</td><td class="M">Maior</td><td class="m">menor</td><td class="m">menor</td><td class="M">Maior</td><td class="M">Maior</td><td class="m">menor</td><td class="d">dim.</td></tr>
-    <tr><td>Com 7ª</td><td>7M</td><td>m7</td><td>m7</td><td>7M</td><td>7</td><td>m7</td><td>m7(b5)</td></tr>
-    <tr><td>Função</td><td>Casa</td><td>Prepara</td><td>Casa fraca</td><td>Sai de casa</td><td>Tensão</td><td>Casa triste</td><td>Tensão</td></tr>
-    <tr><td>Em Dó</td><td>C</td><td>Dm</td><td>Em</td><td>F</td><td>G</td><td>Am</td><td>B°</td></tr>
-  </table></div>
-  <div class="tip"><b>Para decorar:</b> "1, 4 e 5 são maiores; 2, 3 e 6 são menores; o 7 é diminuto." O 7° quase não aparece na música popular — na prática você usa 6 acordes.</div>
-
-  <h3>Montar o campo de qualquer tom</h3>
-  <p>A escala maior segue os passos <b>T – T – S – T – T – T – S</b> (T = tom, pula uma tecla; S = semitom, tecla vizinha). Parta da tônica, ande esses passos e aplique a fórmula em cada nota.</p>
-  <p>Exemplo em Sol: G – A – B – C – D – E – F# → <b>G – Am – Bm – C – D – Em – F#°</b>.</p>
-
-  <h3>Atalho no teclado</h3>
-  <p>Com os dedos 1–3–5 da mão direita na tríade da tônica, suba em "degraus" usando só as teclas da escala: cada degrau é o próximo acorde do campo. Suba e desça <b>dizendo o número em voz alta</b>. Todo dia em um tom diferente.</p>
-
-  <h3>Os acordes que sustentam tudo</h3>
-  <p>Quase toda música se apoia no <b>1, 4 e 5</b>. O 1 é a casa; o 4 sai de casa de forma suave; o 5 cria tensão e pede para voltar ao 1. O <b>6m</b> é o "1 triste". O <b>2m</b> costuma vir antes do 5.</p>
+<section id="tom">
+  <h2>Meu tom</h2>
+  <p class="hint">Escolha o tom. Toque num acorde para ver as notas no teclado e ouvir.</p>
+  <div class="keys" id="keys"></div>
+  <div class="chords" id="chords"></div>
+  <svg class="kb" id="kb" viewBox="0 0 337 110" role="img" aria-label="Teclado com as notas do acorde"></svg>
+  <p class="hint" id="kbinfo"></p>
 </section>
 
-<section id="tons">
-  <h2>2. Os 12 tons maiores</h2>
-  <p>Estude na ordem da última coluna: primeiro os tons mais usados em igreja, pop e sertanejo. Um tom por semana é um bom ritmo.</p>
-  <div class="table"><table>
-    <tr><th>Tom</th><th>1</th><th>2m</th><th>3m</th><th>4</th><th>5</th><th>6m</th><th>7°</th><th>Ordem</th></tr>
-    <tr><td>Dó (C)</td><td>C</td><td>Dm</td><td>Em</td><td>F</td><td>G</td><td>Am</td><td>B°</td><td>1º</td></tr>
-    <tr><td>Sol (G)</td><td>G</td><td>Am</td><td>Bm</td><td>C</td><td>D</td><td>Em</td><td>F#°</td><td>2º</td></tr>
-    <tr><td>Ré (D)</td><td>D</td><td>Em</td><td>F#m</td><td>G</td><td>A</td><td>Bm</td><td>C#°</td><td>3º</td></tr>
-    <tr><td>Lá (A)</td><td>A</td><td>Bm</td><td>C#m</td><td>D</td><td>E</td><td>F#m</td><td>G#°</td><td>4º</td></tr>
-    <tr><td>Mi (E)</td><td>E</td><td>F#m</td><td>G#m</td><td>A</td><td>B</td><td>C#m</td><td>D#°</td><td>5º</td></tr>
-    <tr><td>Fá (F)</td><td>F</td><td>Gm</td><td>Am</td><td>Bb</td><td>C</td><td>Dm</td><td>E°</td><td>6º</td></tr>
-    <tr><td>Si♭ (Bb)</td><td>Bb</td><td>Cm</td><td>Dm</td><td>Eb</td><td>F</td><td>Gm</td><td>A°</td><td>7º</td></tr>
-    <tr><td>Mi♭ (Eb)</td><td>Eb</td><td>Fm</td><td>Gm</td><td>Ab</td><td>Bb</td><td>Cm</td><td>D°</td><td>8º</td></tr>
-    <tr><td>Si (B)</td><td>B</td><td>C#m</td><td>D#m</td><td>E</td><td>F#</td><td>G#m</td><td>A#°</td><td>9º</td></tr>
-    <tr><td>Lá♭ (Ab)</td><td>Ab</td><td>Bbm</td><td>Cm</td><td>Db</td><td>Eb</td><td>Fm</td><td>G°</td><td>10º</td></tr>
-    <tr><td>Ré♭ (Db)</td><td>Db</td><td>Ebm</td><td>Fm</td><td>Gb</td><td>Ab</td><td>Bbm</td><td>C°</td><td>11º</td></tr>
-    <tr><td>Fá# (F#)</td><td>F#</td><td>G#m</td><td>A#m</td><td>B</td><td>C#</td><td>D#m</td><td>E#°</td><td>12º</td></tr>
-  </table></div>
-  <h3>Atalhos para decorar</h3>
-  <ul>
-    <li><b>O 4 e o 5 são vizinhos no teclado</b> (F e G em Dó; C e D em Sol).</li>
-    <li><b>O 6m fica 3 semitons abaixo do 1</b> (Dó → Lám; Sol → Mim). É o relativo menor.</li>
-    <li><b>O 2m fica um tom acima do 1</b> (Dó → Rém; Sol → Lám).</li>
-    <li><b>Ciclo:</b> C → G → D → A → E → B, cada passo ganha um sustenido. C → F → Bb → Eb → Ab, cada passo ganha um bemol.</li>
-    <li><b>Tons vizinhos compartilham 6 de 7 acordes.</b> Quem sabe Dó já sabe quase todo Sol.</li>
-  </ul>
-</section>
+<section id="dias">
+  <h2>Os 7 dias</h2>
+  <p class="hint">Um dia por vez. Marque o que fizer; o progresso fica salvo neste celular. Use o "Meu tom" para ver os acordes de qualquer tom.</p>
 
-<section id="progressoes">
-  <h2>3. As progressões de quase toda música</h2>
-  <p>Quando você reconhece a sequência, não precisa "tirar" acorde por acorde: só confirma.</p>
-  <div class="table"><table>
-    <tr><th>Progressão</th><th>Em Dó</th><th>Em Sol</th><th class="wrap">Onde aparece</th></tr>
-    <tr><td><b>1 – 4 – 5 – 1</b></td><td>C F G C</td><td>G C D G</td><td class="wrap">Base de tudo: forró, sertanejo raiz, hinos, rock</td></tr>
-    <tr><td><b>1 – 5 – 6m – 4</b></td><td>C G Am F</td><td>G D Em C</td><td class="wrap">"Progressão do pop": louvor, pop, sertanejo universitário</td></tr>
-    <tr><td><b>1 – 6m – 4 – 5</b></td><td>C Am F G</td><td>G Em C D</td><td class="wrap">Anos 50, baladas românticas</td></tr>
-    <tr><td><b>6m – 4 – 1 – 5</b></td><td>Am F C G</td><td>Em C G D</td><td class="wrap">A do pop começando no menor: mais emotiva</td></tr>
-    <tr><td><b>2m – 5 – 1</b></td><td>Dm G C</td><td>Am D G</td><td class="wrap">Fechamento: MPB, bossa, jazz, finais de frase</td></tr>
-    <tr><td><b>1 – 4 – 1 – 5</b></td><td>C F C G</td><td>G C G D</td><td class="wrap">Hinos, corinhos, música infantil</td></tr>
-    <tr><td><b>4 – 5 – 3m – 6m</b></td><td>F G Em Am</td><td>C D Bm Em</td><td class="wrap">Pré-refrão de louvor e pop; "sobe" a emoção</td></tr>
-    <tr><td><b>1 – 3m – 4 – 5</b></td><td>C Em F G</td><td>G Bm C D</td><td class="wrap">Variação da 1–6–4–5 com mais movimento</td></tr>
-  </table></div>
-  <h3>Como estudar</h3>
-  <ol>
-    <li>Toque cada progressão em <b>Dó</b> até ficar automático, <b>falando os números</b>.</li>
-    <li>Toque a mesma em <b>Sol, Ré, Lá e Fá</b> sem olhar a tabela. Errou? Volte à tabela, não à cifra.</li>
-    <li>Pegue 3 músicas que você já toca e <b>reescreva a cifra em números</b>.</li>
-    <li>Toque essas músicas em <b>outro tom</b> lendo só os números.</li>
-  </ol>
-  <div class="tip">Cifra em Sol: <code>G D Em C</code> → números: <code>1 5 6m 4</code> → em Lá: <code>A E F#m D</code>. O cantor pediu outro tom? É a mesma música: <code>1 5 6m 4</code>. Só muda o 1.</div>
-</section>
+  <details class="day" data-day="1">
+    <summary><span>Dia 1 · Só 1, 4 e 5</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule"><b>1</b> = casa. <b>4</b> = sai de casa. <b>5</b> = tensão que pede para voltar ao 1.</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Toque <code>1 4 5 1</code> em <b>C, G e D</b>, falando "um, quatro, cinco, um" em voz alta.</span></li>
+        <li><input type="checkbox"><span>Toque "Parabéns pra você" (usa só 1, 5 e 4) em C e depois em G.</span></li>
+        <li><input type="checkbox"><span>Treino de ouvido, nível <b>1 e 5</b>: 10 acertos.</span></li>
+      </ul>
+      <p class="ready">Pronto quando: toca 1 4 5 1 nos 3 tons sem olhar.</p>
+    </div>
+  </details>
 
-<section id="menor">
-  <h2>4. Tom menor e acordes "de fora"</h2>
-  <h3>Tom menor = mesmo campo, começando no 6m</h3>
-  <p>Lá menor usa <b>os mesmos acordes</b> de Dó maior; só muda a "casa". Pense no tom maior relativo (3 semitons acima) e trate o <b>6m como casa</b>.</p>
-  <div class="table"><table>
-    <tr><th>Tom menor</th><th>1m</th><th>2°</th><th>3</th><th>4m</th><th>5</th><th>6</th><th>7</th></tr>
-    <tr><td>Lá menor</td><td>Am</td><td>B°</td><td>C</td><td>Dm</td><td><b>E</b> (ou Em)</td><td>F</td><td>G</td></tr>
-    <tr><td>Mi menor</td><td>Em</td><td>F#°</td><td>G</td><td>Am</td><td><b>B</b> (ou Bm)</td><td>C</td><td>D</td></tr>
-    <tr><td>Ré menor</td><td>Dm</td><td>E°</td><td>F</td><td>Gm</td><td><b>A</b> (ou Am)</td><td>Bb</td><td>C</td></tr>
-  </table></div>
-  <p>Regra prática: no tom menor o <b>5 quase sempre vira maior</b> — é ele que dá a tensão antes de voltar ao 1m. Progressões típicas: <code>1m 4m 5 1m</code> (Am Dm E Am) e <code>1m 6 3 7</code> (Am F C G).</p>
+  <details class="day" data-day="2">
+    <summary><span>Dia 2 · Entra o 6m</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule"><b>6m</b> = o 1 triste. <code>1 5 6m 4</code> é a progressão de metade das músicas atuais (louvor, pop, sertanejo).</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Toque <code>1 5 6m 4</code> em <b>C, G, D e A</b>, sem parar entre os tons.</span></li>
+        <li><input type="checkbox"><span>Toque a variação <code>6m 4 1 5</code> nos mesmos tons.</span></li>
+        <li><input type="checkbox"><span>Treino de ouvido, nível <b>1 4 5 6m</b>: 10 acertos.</span></li>
+        <li><input type="checkbox"><span>Quiz: 10 perguntas.</span></li>
+      </ul>
+      <p class="ready">Pronto quando: troca de tom no meio da progressão sem travar.</p>
+    </div>
+  </details>
 
-  <h3>Acordes de fora mais comuns</h3>
-  <p>Quando um acorde "não encaixa", quase sempre é um destes. Os 4 primeiros cobrem a maioria dos casos.</p>
-  <div class="table"><table>
-    <tr><th>Acorde</th><th>Em Dó</th><th>Em Sol</th><th class="wrap">Como reconhecer</th></tr>
-    <tr><td><b>1 com 7</b> → vai p/ o 4</td><td>C7 → F</td><td>G7 → C</td><td class="wrap">Soa "ansioso" logo antes do 4</td></tr>
-    <tr><td><b>3 maior</b> → vai p/ o 6m</td><td>E7 → Am</td><td>B7 → Em</td><td class="wrap">O 3m "vira maior" antes do 6m</td></tr>
-    <tr><td><b>6 maior</b> → vai p/ o 2m</td><td>A7 → Dm</td><td>E7 → Am</td><td class="wrap">O 6m "vira maior" antes do 2m</td></tr>
-    <tr><td><b>2 maior</b> → vai p/ o 5</td><td>D7 → G</td><td>A7 → D</td><td class="wrap">O 2m "vira maior" antes do 5</td></tr>
-    <tr><td><b>4 menor</b></td><td>Fm</td><td>Cm</td><td class="wrap">Nostalgia; vem depois do 4 maior: F → Fm → C</td></tr>
-    <tr><td><b>b7</b></td><td>Bb</td><td>F</td><td class="wrap">Som de rock/louvor; maior, um tom abaixo do 1</td></tr>
-    <tr><td><b>b6</b></td><td>Ab</td><td>Eb</td><td class="wrap">Final épico: b6 – b7 – 1</td></tr>
-  </table></div>
-  <div class="tip">O padrão dos 4 primeiros: <b>um acorde vira maior com sétima para "empurrar" para o acorde uma quinta abaixo.</b> Ouviu um menor do campo virando maior? Procure para onde ele está indo.</div>
+  <details class="day" data-day="3">
+    <summary><span>Dia 3 · Suas músicas viram números</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule">Uma cifra é só um tom + uma sequência de números. Ex.: em G, <code>G D Em C</code> = <code>1 5 6m 4</code>.</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Pegue <b>3 músicas</b> que você já toca pela cifra e escreva o número embaixo de cada acorde.</span></li>
+        <li><input type="checkbox"><span>Marque as progressões que se repetem entre elas.</span></li>
+        <li><input type="checkbox"><span>Quiz: 10 perguntas.</span></li>
+      </ul>
+      <p class="ready">Pronto quando: as 3 músicas estão escritas só em números.</p>
+    </div>
+  </details>
+
+  <details class="day" data-day="4">
+    <summary><span>Dia 4 · Mudar de tom sem se perder</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule">Lendo números, mudar de tom é só trocar o 1. Veja os acordes do tom novo no "Meu tom".</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Toque as 3 músicas do Dia 3 em <b>2 tons diferentes</b>, lendo só os números.</span></li>
+        <li><input type="checkbox"><span>Simule o cantor pedindo "sobe um tom": de C para D, de G para A, de D para E.</span></li>
+        <li><input type="checkbox"><span>Quiz: acerte 8 de 10.</span></li>
+      </ul>
+      <p class="ready">Pronto quando: troca o tom de uma música conhecida em menos de 1 minuto.</p>
+    </div>
+  </details>
+
+  <details class="day" data-day="5">
+    <summary><span>Dia 5 · 2m e 3m</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule"><b>2m</b> quase sempre vai para o 5 (<code>2m 5 1</code>). <b>3m</b> é passagem para o 6m ou o 4.</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Toque <code>2m 5 1</code> em <b>C, G, D, A e F</b>.</span></li>
+        <li><input type="checkbox"><span>Toque <code>4 5 3m 6m</code> em C e G (som de pré-refrão).</span></li>
+        <li><input type="checkbox"><span>Treino de ouvido, nível <b>Todos</b>: 10 acertos.</span></li>
+      </ul>
+      <p class="ready">Pronto quando: reconhece os 6 graus no treino de ouvido com 7 de 10 acertos.</p>
+    </div>
+  </details>
+
+  <details class="day" data-day="6">
+    <summary><span>Dia 6 · Tirando de ouvido</span><span class="prog"></span></summary>
+    <div class="body">
+      <ol>
+        <li><b>Ache a casa:</b> cantarole a última nota do refrão e ache no teclado a nota que soa como "cheguei". Esse é o tom.</li>
+        <li><b>Calibre:</b> toque <code>1 4 5 1</code> desse tom.</li>
+        <li><b>Ouça o baixo:</b> com a mão esquerda, procure a nota grave só entre as notas do tom.</li>
+        <li><b>Teste nesta ordem:</b> 1 → 5 → 4 → 6m → 2m → 3m.</li>
+        <li><b>Anote em números.</b></li>
+      </ol>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Tire <b>1 música fácil</b> (louvor ou pop atual) só de ouvido.</span></li>
+        <li><input type="checkbox"><span>Confira com a cifra só depois.</span></li>
+      </ul>
+      <p class="hint">Dica: o app Moises deixa a música mais lenta e destaca o baixo.</p>
+    </div>
+  </details>
+
+  <details class="day" data-day="7">
+    <summary><span>Dia 7 · Acorde estranho e tom menor</span><span class="prog"></span></summary>
+    <div class="body">
+      <div class="rule"><b>Acorde que não encaixa?</b> Quase sempre é um menor do campo que virou maior para "puxar" o próximo. Em C: <code>E7 → Am</code>, <code>A7 → Dm</code>, <code>D7 → G</code>.</div>
+      <div class="rule"><b>Tom menor</b> = mesmos acordes do tom maior relativo, com o 6m como casa e o 5 virando maior. Lá menor: <code>Am Dm E Am</code>.</div>
+      <ul class="checks">
+        <li><input type="checkbox"><span>Toque <code>C E7 Am F G C</code>.</span></li>
+        <li><input type="checkbox"><span>Toque <code>Am Dm E Am</code> e depois <code>Em Am B Em</code>.</span></li>
+        <li><input type="checkbox"><span>Tire mais 1 música de ouvido.</span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="day" data-day="8">
+    <summary><span>Semana 2 · Fixar (opcional)</span><span class="prog"></span></summary>
+    <div class="body">
+      <p>Todo dia, 20 minutos:</p>
+      <ul class="checks">
+        <li><input type="checkbox"><span>1 música nova por dia, tirada de ouvido, cada uma num tom diferente.</span></li>
+        <li><input type="checkbox"><span>Treino de ouvido nível <b>Todos</b> com tom aleatório: 10 minutos.</span></li>
+        <li><input type="checkbox"><span><code>1 5 6m 4</code> nos 12 tons: C G D A E B F# Db Ab Eb Bb F.</span></li>
+        <li><input type="checkbox"><span>Quiz: 9 de 10 acertos.</span></li>
+      </ul>
+    </div>
+  </details>
+  <button class="btn ghost" type="button" id="resetDays">Recomeçar do zero</button>
 </section>
 
 <section id="ouvido">
-  <h2>5. Tocar de ouvido sabendo só o tom</h2>
-  <p>Com o tom em mãos você escolhe entre <b>6 acordes</b>, e na maioria das vezes é o <b>1, 4, 5 ou 6m</b>. O método é eliminar opções, não adivinhar.</p>
-  <h3>Passo a passo</h3>
-  <ol>
-    <li><b>Ache o tom</b> (se ninguém disser): cantarole a última nota da música ou do refrão e procure a nota que soa como "chegou em casa". Teste se o acorde é maior ou menor.</li>
-    <li><b>Toque 1 – 4 – 5 – 1 do tom antes de começar</b>, para "calibrar" o ouvido.</li>
-    <li><b>Ouça o baixo</b>: com a mão esquerda, procure a nota grave só entre as 7 notas da escala. A nota do baixo quase sempre é o nome do acorde.</li>
-    <li><b>Ache onde o acorde muda</b>: bata o pé; quase sempre troca a cada 4 ou 8 batidas.</li>
-    <li><b>Teste na ordem:</b> 1 → 5 → 4 → 6m → 2m → 3m.</li>
-    <li><b>Nada encaixa?</b> É acorde de fora: veja se um menor do campo virou maior (3, 6 ou 2); depois teste o 4m e o b7.</li>
-    <li><b>Anote em números</b>: <code>Estrofe: 1 4 1 5</code> · <code>Refrão: 4 5 3m 6m 2m 5 1</code>.</li>
-  </ol>
-  <h3>O que cada grau faz sentir</h3>
-  <div class="table"><table>
-    <tr><th>Grau</th><th class="wrap">Sensação</th></tr>
-    <tr><td>1</td><td class="wrap">Repouso total, final de frase, "cheguei"</td></tr>
-    <tr><td>4</td><td class="wrap">Abertura, "saí de casa", leveza; comum no início do refrão</td></tr>
-    <tr><td>5</td><td class="wrap">Tensão, expectativa, "falta terminar"</td></tr>
-    <tr><td>6m</td><td class="wrap">Melancolia; parece o 1, mas triste</td></tr>
-    <tr><td>2m</td><td class="wrap">Preparação suave; quase sempre vai para o 5</td></tr>
-    <tr><td>3m</td><td class="wrap">Passagem; costuma ir para o 6m ou o 4</td></tr>
-  </table></div>
-  <h3>Ferramentas</h3>
-  <ul>
-    <li><b>Moises</b> (app): reduz a velocidade, muda o tom e isola o baixo.</li>
-    <li><b>Cifra só como gabarito</b>: tire de ouvido primeiro, confira depois.</li>
-  </ul>
+  <h2>Treino de ouvido</h2>
+  <p class="hint">Aperte Tocar: você ouve <code>1 4 5 1</code> para firmar o tom e depois um acorde. Diga qual número ele é. Use fone ou o alto-falante do celular.</p>
+  <p><b>Nível</b></p>
+  <div class="chips" id="earLevels"></div>
+  <div class="row"><label><input type="checkbox" id="earRandom"> Tom aleatório</label> <span class="hint" id="earKey"></span></div>
+  <div class="row">
+    <button class="btn" type="button" id="earPlay">▶ Tocar</button>
+    <button class="btn ghost" type="button" id="earAgain">Repetir</button>
+    <button class="btn ghost" type="button" id="earOnly">Só o acorde</button>
+  </div>
+  <div class="answers" id="earAns"></div>
+  <div class="fb" id="earFb"></div>
+  <div class="score" id="earScore"></div>
 </section>
 
-<section id="exercicios">
-  <h2>6. Exercícios de fixação</h2>
-  <p>Faça no papel e depois toque cada resposta, falando os números. O gabarito está no fim — não espie antes.</p>
-
-  <h3>Parte A — Teoria (10 min)</h3>
-  <div class="ex"><b>Ex. 1 — Complete o campo</b> (1, 2m, 3m, 4, 5, 6m, 7°):<br>a) Ré · b) Lá · c) Fá · d) Si♭ · e) Mi</div>
-  <div class="ex"><b>Ex. 2 — Qual é o grau?</b> No tom de Sol: Em · C · D · Am · Bm</div>
-  <div class="ex"><b>Ex. 3 — Cifra para números:</b><br>a) Ré: <code>D A Bm G</code><br>b) Lá: <code>A F#m D E</code><br>c) Mi: <code>C#m A E B</code><br>d) Fá: <code>F Bb C F</code></div>
-  <div class="ex"><b>Ex. 4 — Transponha</b> (pensando nos números):<br>a) <code>C G Am F</code> para Ré, Lá e Mi<br>b) <code>Dm G C</code> para Sol e Fá<br>c) <code>G Em C D</code> para Dó e Lá</div>
-  <div class="ex"><b>Ex. 5 — Ache o acorde de fora e diga o que ele faz:</b><br>a) Dó: <code>C E7 Am</code><br>b) Dó: <code>C C7 F</code><br>c) Sol: <code>G A7 D</code><br>d) Dó: <code>C F Fm C</code></div>
-  <div class="ex"><b>Ex. 6 — Relativos:</b> relativo menor de G, D e F? Relativo maior de Am e C#m?</div>
-
-  <h3>Parte B — Teclado (10 min por dia)</h3>
-  <ul class="checks" data-group="b">
-    <li><input type="checkbox"><span>Campo do tom da semana subindo e descendo, falando os números (3 vezes)</span></li>
-    <li><input type="checkbox"><span><code>1 4 5 1</code> nos 12 tons: C → G → D → A → E → B → F# → Db → Ab → Eb → Bb → F</span></li>
-    <li><input type="checkbox"><span><code>1 5 6m 4</code> em 4 tons sem parar entre eles</span></li>
-    <li><input type="checkbox"><span><code>2m 5 1</code> em 4 tons, com tétrades (m7 – 7 – 7M)</span></li>
-    <li><input type="checkbox"><span>Uma música conhecida em 3 tons, lendo só os números</span></li>
-  </ul>
-
-  <h3>Parte C — Ouvido (10 min por dia)</h3>
-  <ul class="checks" data-group="c">
-    <li><input type="checkbox"><span><b>Ditado com alguém:</b> a pessoa toca <code>1 4 5 1</code> e depois um acorde do campo; de olhos fechados, diga o número. Comece com 1, 4 e 5; depois inclua 6m, 2m e 3m.</span></li>
-    <li><input type="checkbox"><span><b>Ditado sozinho:</b> toque o campo, feche os olhos, toque um acorde ao acaso e diga qual foi antes de olhar.</span></li>
-    <li><input type="checkbox"><span><b>App de treino funcional</b> (Functional Ear Trainer ou ToneDear): ouve a cadência e uma nota, diz o grau.</span></li>
-    <li><input type="checkbox"><span><b>Uma música por semana</b> tirada de ouvido, anotada em números e conferida com a cifra.</span></li>
-    <li><input type="checkbox"><span><b>Cantar a escala com números</b> enquanto toca, em tons diferentes.</span></li>
-  </ul>
-  <button class="reset" type="button" id="reset">Desmarcar tudo (novo dia)</button>
-
-  <details>
-    <summary>Ver gabarito</summary>
-    <p><b>Ex. 1</b></p>
-    <div class="table"><table>
-      <tr><th>Tom</th><th>1</th><th>2m</th><th>3m</th><th>4</th><th>5</th><th>6m</th><th>7°</th></tr>
-      <tr><td>Ré</td><td>D</td><td>Em</td><td>F#m</td><td>G</td><td>A</td><td>Bm</td><td>C#°</td></tr>
-      <tr><td>Lá</td><td>A</td><td>Bm</td><td>C#m</td><td>D</td><td>E</td><td>F#m</td><td>G#°</td></tr>
-      <tr><td>Fá</td><td>F</td><td>Gm</td><td>Am</td><td>Bb</td><td>C</td><td>Dm</td><td>E°</td></tr>
-      <tr><td>Si♭</td><td>Bb</td><td>Cm</td><td>Dm</td><td>Eb</td><td>F</td><td>Gm</td><td>A°</td></tr>
-      <tr><td>Mi</td><td>E</td><td>F#m</td><td>G#m</td><td>A</td><td>B</td><td>C#m</td><td>D#°</td></tr>
-    </table></div>
-    <p><b>Ex. 2</b> Em = 6m · C = 4 · D = 5 · Am = 2m · Bm = 3m</p>
-    <p><b>Ex. 3</b> a) 1 5 6m 4 · b) 1 6m 4 5 · c) 6m 4 1 5 · d) 1 4 5 1</p>
-    <p><b>Ex. 4</b><br>a) Ré: D A Bm G · Lá: A E F#m D · Mi: E B C#m A<br>b) Sol: Am D G · Fá: Gm C F<br>c) (1 6m 4 5) Dó: C Am F G · Lá: A F#m D E</p>
-    <p><b>Ex. 5</b><br>a) E7 = 3 maior, prepara o 6m (Am)<br>b) C7 = 1 com sétima, prepara o 4 (F)<br>c) A7 = 2 maior, prepara o 5 (D)<br>d) Fm = 4 menor, emprestado do tom menor</p>
-    <p><b>Ex. 6</b> G → Em · D → Bm · F → Dm · Am → C · C#m → E</p>
-  </details>
-</section>
-
-<section id="plano">
-  <h2>7. Plano de 8 semanas (30 min por dia)</h2>
-  <p>Cada dia: 10 min de teoria, 10 de teclado e 10 de ouvido, sempre no tom da semana.</p>
-  <div class="table"><table>
-    <tr><th>Sem.</th><th>Tom</th><th class="wrap">Meta</th></tr>
-    <tr><td>1</td><td>C</td><td class="wrap">Decorar a fórmula; campo falando números; reconhecer 1, 4 e 5 de ouvido</td></tr>
-    <tr><td>2</td><td>G</td><td class="wrap">1–4–5–1 e 1–5–6m–4; reescrever 3 músicas conhecidas em números</td></tr>
-    <tr><td>3</td><td>D</td><td class="wrap">Incluir o 6m no ditado; tocar as 3 músicas em C, G e D</td></tr>
-    <tr><td>4</td><td>A</td><td class="wrap">2m–5–1 com tétrades; incluir o 2m no ditado</td></tr>
-    <tr><td>5</td><td>E</td><td class="wrap">Tirar a primeira música inteira de ouvido (uma 1–5–6m–4)</td></tr>
-    <tr><td>6</td><td>F e Bb</td><td class="wrap">Tom menor: relativos e o 5 maior; incluir o 3m no ditado</td></tr>
-    <tr><td>7</td><td>Eb e Ab</td><td class="wrap">Acordes de fora: 3, 6 e 2 maiores e o 4m</td></tr>
-    <tr><td>8</td><td>12 tons</td><td class="wrap">1–4–5–1 e 1–5–6m–4 no ciclo completo; tirar 2 músicas de ouvido</td></tr>
-  </table></div>
+<section id="quiz">
+  <h2>Quiz rápido</h2>
+  <p class="hint">Perguntas em tons sorteados. Responda de cabeça, sem olhar o "Meu tom".</p>
+  <div class="q" id="qText"></div>
+  <div class="answers" id="qAns"></div>
+  <div class="fb" id="qFb"></div>
+  <div class="row"><button class="btn ghost" type="button" id="qReset">Zerar placar</button><span class="score" id="qScore"></span></div>
 </section>
 
 <section id="cola">
-  <h2>Cola rápida</h2>
-  <ul>
-    <li><b>Fórmula:</b> 1 – 2m – 3m – 4 – 5 – 6m – 7°. Maiores: 1, 4, 5. Menores: 2, 3, 6.</li>
-    <li><b>Escala maior:</b> T – T – S – T – T – T – S.</li>
-    <li><b>Mais usados:</b> 1, 4, 5 e 6m. Teste: 1 → 5 → 4 → 6m → 2m → 3m.</li>
-    <li><b>Funções:</b> 1 casa · 4 sai de casa · 5 tensão · 6m casa triste · 2m prepara o 5.</li>
-    <li><b>Progressões:</b> 1–4–5–1 · 1–5–6m–4 · 1–6m–4–5 · 2m–5–1.</li>
-    <li><b>Tom menor:</b> campo do relativo maior; o 6m vira casa; o 5 vira maior.</li>
-    <li><b>Acorde de fora:</b> menor do campo virou maior? Empurra para uma quinta abaixo.</li>
-    <li><b>Transpor:</b> a música é a sequência de números. Mudou o tom, só muda o 1.</li>
-  </ul>
-  <h3>Fontes</h3>
-  <ul>
-    <li><a href="https://www.premierguitar.com/lessons/chords/nashville-number-system">Premier Guitar — Nashville Number System</a></li>
-    <li><a href="https://apps.apple.com/app/id1088761926">Functional Ear Trainer (App Store)</a></li>
-    <li><a href="https://tonedear.com/">ToneDear — treino de ouvido</a></li>
+  <h2>Cola</h2>
+  <ul class="plain">
+    <li><b>Os 6 acordes:</b> 1 · 2m · 3m · 4 · 5 · 6m (1, 4 e 5 maiores).</li>
+    <li><b>O que cada um faz:</b> 1 casa · 4 sai de casa · 5 tensão · 6m casa triste · 2m prepara o 5.</li>
+    <li><b>Progressões:</b> <code>1 4 5 1</code> · <code>1 5 6m 4</code> · <code>6m 4 1 5</code> · <code>2m 5 1</code>.</li>
+    <li><b>Tirar de ouvido:</b> ache a casa → ouça o baixo → teste 1, 5, 4, 6m, 2m, 3m.</li>
+    <li><b>Estranho?</b> Um menor que virou maior puxa o próximo (E7 → Am em C).</li>
+    <li><b>Tom menor:</b> mesmos acordes do relativo maior; o 5 vira maior.</li>
   </ul>
 </section>
 </main>
-<footer>Dica: no celular, use "Adicionar à tela inicial" para abrir como app.</footer>
+<footer>No celular: "Adicionar à tela inicial" para abrir como app.</footer>
+
 <script>
 (function(){
-  var boxes = document.querySelectorAll('.checks input');
-  var KEY = 'apostila-checks';
-  var saved = [];
-  try { saved = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) {}
-  boxes.forEach(function(b, i){
-    b.checked = !!saved[i];
-    b.addEventListener('change', save);
-  });
-  function save(){
-    var v = Array.prototype.map.call(boxes, function(b){ return b.checked; });
-    try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e) {}
+  var SH=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  var FL=['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+  var KEYS=[{n:'C',pc:0},{n:'G',pc:7},{n:'D',pc:2},{n:'A',pc:9},{n:'E',pc:4},{n:'B',pc:11},
+            {n:'F#',pc:6},{n:'Db',pc:1,f:1},{n:'Ab',pc:8,f:1},{n:'Eb',pc:3,f:1},{n:'Bb',pc:10,f:1},{n:'F',pc:5,f:1}];
+  var DEG=[{n:'1',s:0},{n:'2m',s:2,m:1},{n:'3m',s:4,m:1},{n:'4',s:5},{n:'5',s:7},{n:'6m',s:9,m:1}];
+  var FEEL=['casa','prepara o 5','passagem','sai de casa','tensão','casa triste'];
+  function $(id){return document.getElementById(id);}
+  function nm(k,pc){return (k.f?FL:SH)[((pc%12)+12)%12];}
+  function chord(k,i){var d=DEG[i];return nm(k,k.pc+d.s)+(d.m?'m':'');}
+  function rand(n){return Math.floor(Math.random()*n);}
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=rand(i+1),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function load(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch(e){return def;}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+  /* ---------- áudio ---------- */
+  var ctx=null;
+  function ac(){ if(!ctx){var A=window.AudioContext||window.webkitAudioContext; if(!A) return null; ctx=new A();}
+    if(ctx.state==='suspended') ctx.resume(); return ctx; }
+  function tone(c,m,t,dur,vol){
+    var o=c.createOscillator(),g=c.createGain();
+    o.type='triangle'; o.frequency.value=440*Math.pow(2,(m-69)/12);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0008,t+dur);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+dur+0.05);
   }
-  document.getElementById('reset').addEventListener('click', function(){
-    boxes.forEach(function(b){ b.checked = false; });
-    save();
+  function voicing(k,i){var d=DEG[i],r=((k.pc+d.s)%12+12)%12,root=55+((r-7+12)%12);
+    return {bass:root-12,notes:[root,root+(d.m?3:4),root+7]};}
+  function playChord(k,i,t,dur){var c=ac(); if(!c) return; t=t||c.currentTime+0.05; dur=dur||0.9;
+    var v=voicing(k,i); tone(c,v.bass,t,dur,0.16); v.notes.forEach(function(m){tone(c,m,t,dur,0.10);});}
+  function cadence(k,then){var c=ac(); if(!c) return; var t=c.currentTime+0.08;
+    [0,3,4,0].forEach(function(i,j){playChord(k,i,t+j*0.62,0.7);});
+    if(then!=null) playChord(k,then,t+4*0.62+0.55,1.3);}
+
+  /* ---------- meu tom ---------- */
+  var cur=KEYS[load('tom',0)]||KEYS[0], selDeg=0;
+  function renderKeys(){var box=$('keys');box.innerHTML='';
+    KEYS.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.textContent=k.n;
+      if(k===cur) b.className='on';
+      b.onclick=function(){cur=k;save('tom',i);renderKeys();renderChords();updateEarKey();};box.appendChild(b);});}
+  function renderChords(){var box=$('chords');box.innerHTML='';
+    DEG.forEach(function(d,i){var el=document.createElement('div');
+      el.className='chord '+(d.m?'m':'M')+(i===selDeg?' sel':'');
+      el.innerHTML='<div class="deg">'+d.n+'</div><div class="nm">'+chord(cur,i)+'</div><div class="fl">'+FEEL[i]+'</div>';
+      el.onclick=function(){selDeg=i;renderChords();playChord(cur,i);};box.appendChild(el);});
+    renderKb();}
+  function renderKb(){
+    var d=DEG[selDeg],r=((cur.pc+d.s)%12+12)%12,on={};
+    [r,r+(d.m?3:4),r+7].forEach(function(x){on[x]=1;});
+    var W=[0,2,4,5,7,9,11],B={1:1,3:2,6:4,8:5,10:6},s='',w=24,x;
+    for(var o=0;o<2;o++){W.forEach(function(p,j){var v=o*12+p;x=(o*7+j)*w;
+      s+='<rect x="'+(x+0.5)+'" y="0.5" width="'+(w-1)+'" height="108" rx="3" fill="'+(on[v]?'var(--key-on)':'#fff')+'" stroke="#888"/>';});}
+    for(o=0;o<2;o++){for(var p in B){var v=o*12+(+p);x=(o*7+B[p])*w-8;
+      s+='<rect x="'+x+'" y="0.5" width="16" height="66" rx="2" fill="'+(on[v]?'var(--key-on)':'#222')+'" stroke="#111"/>';}}
+    $('kb').innerHTML=s;
+    var names=[r,r+(d.m?3:4),r+7].map(function(x){return nm(cur,x);});
+    $('kbinfo').textContent=chord(cur,selDeg)+' ('+d.n+' de '+cur.n+'): '+names.join(' – ');
+  }
+
+  /* ---------- 7 dias ---------- */
+  var checks=load('checks7',{});
+  document.querySelectorAll('details.day').forEach(function(day){
+    var id=day.getAttribute('data-day'),boxes=day.querySelectorAll('.checks input');
+    function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++;});
+      day.querySelector('.prog').textContent=n===boxes.length?'✓ feito':n+'/'+boxes.length;
+      day.classList.toggle('done',n===boxes.length);}
+    boxes.forEach(function(b,i){var key=id+'-'+i;b.checked=!!checks[key];
+      b.onchange=function(){checks[key]=b.checked;save('checks7',checks);upd();openNext();};});
+    upd();
   });
+  function openNext(){var days=document.querySelectorAll('details.day');
+    for(var i=0;i<days.length;i++){if(!days[i].classList.contains('done')){days[i].open=true;return;}}}
+  openNext();
+  $('resetDays').onclick=function(){if(!confirm('Desmarcar todos os dias?'))return;checks={};save('checks7',checks);
+    document.querySelectorAll('.checks input').forEach(function(b){b.checked=false;b.dispatchEvent(new Event('change'));});
+    document.querySelectorAll('details.day').forEach(function(d,i){d.open=i===0;});};
+
+  /* ---------- treino de ouvido ---------- */
+  var LEVELS=[{n:'1 e 5',d:[0,4]},{n:'1 4 5',d:[0,3,4]},{n:'1 4 5 6m',d:[0,3,4,5]},{n:'Todos',d:[0,1,2,3,4,5]}];
+  var lvl=load('earLvl',0),earK=cur,target=null,answered=false,earOk=0,earTot=0;
+  function renderLevels(){var box=$('earLevels');box.innerHTML='';
+    LEVELS.forEach(function(L,i){var b=document.createElement('button');b.type='button';b.textContent=L.n;
+      if(i===lvl)b.className='on';b.onclick=function(){lvl=i;save('earLvl',i);target=null;renderLevels();renderEarAns();$('earFb').textContent='';};box.appendChild(b);});}
+  function updateEarKey(){if(!$('earRandom').checked)earK=cur;$('earKey').textContent='Tom: '+earK.n;}
+  function renderEarAns(){var box=$('earAns');box.innerHTML='';
+    LEVELS[lvl].d.forEach(function(i){var b=document.createElement('button');b.type='button';b.textContent=DEG[i].n;
+      b.onclick=function(){if(target==null||answered)return;answered=true;earTot++;
+        var ok=i===target;if(ok)earOk++;b.className=ok?'ok':'bad';
+        if(!ok)box.querySelectorAll('button').forEach(function(x){if(x.textContent===DEG[target].n)x.className='ok';});
+        $('earFb').className='fb '+(ok?'ok':'bad');
+        $('earFb').textContent=(ok?'Acertou! ':'Era o '+DEG[target].n+'. ')+'('+chord(earK,target)+' em '+earK.n+')';
+        $('earScore').textContent=earOk+' de '+earTot+' acertos';};
+      box.appendChild(b);});}
+  $('earRandom').onchange=function(){earK=this.checked?KEYS[rand(12)]:cur;updateEarKey();};
+  $('earPlay').onclick=function(){if($('earRandom').checked)earK=KEYS[rand(12)];updateEarKey();
+    var opts=LEVELS[lvl].d;target=opts[rand(opts.length)];answered=false;renderEarAns();
+    $('earFb').className='fb';$('earFb').textContent='Qual é o número?';cadence(earK,target);};
+  $('earAgain').onclick=function(){if(target!=null)cadence(earK,target);};
+  $('earOnly').onclick=function(){if(target!=null)playChord(earK,target,null,1.3);};
+
+  /* ---------- quiz ---------- */
+  var PROGS=[[0,3,4,0],[0,4,5,3],[5,3,0,4],[1,4,0],[0,5,3,4]];
+  var qs=load('quiz',{ok:0,tot:0}),qLock=false;
+  function progName(p){return p.map(function(i){return DEG[i].n;}).join(' ');}
+  function progIn(k,p){return p.map(function(i){return chord(k,i);}).join(' ');}
+  function newQ(){qLock=false;$('qFb').textContent='';var k=KEYS[rand(12)],t=rand(3),q,right,opts;
+    if(t===0){var i=rand(6);q='Tom de '+k.n+': qual é o '+DEG[i].n+'?';right=chord(k,i);
+      opts=shuffle([0,1,2,3,4,5].filter(function(x){return x!==i;})).slice(0,3).map(function(x){return chord(k,x);});}
+    else if(t===1){var j=rand(6);q='Tom de '+k.n+': '+chord(k,j)+' é qual número?';right=DEG[j].n;
+      opts=shuffle([0,1,2,3,4,5].filter(function(x){return x!==j;})).slice(0,3).map(function(x){return DEG[x].n;});}
+    else{var p=PROGS[rand(PROGS.length)];q='Toque '+progName(p)+' no tom de '+k.n+':';right=progIn(k,p);
+      opts=shuffle(KEYS.filter(function(x){return x!==k;})).slice(0,3).map(function(x){return progIn(x,p);});}
+    $('qText').textContent=q;var box=$('qAns');box.innerHTML='';
+    box.style.gridTemplateColumns=t===2?'1fr':'';
+    shuffle(opts.concat([right])).forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o;
+      b.onclick=function(){if(qLock)return;qLock=true;var ok=o===right;qs.tot++;if(ok)qs.ok++;save('quiz',qs);
+        b.className=ok?'ok':'bad';if(!ok)box.querySelectorAll('button').forEach(function(x){if(x.textContent===right)x.className='ok';});
+        $('qFb').className='fb '+(ok?'ok':'bad');$('qFb').textContent=ok?'Isso!':'Resposta: '+right;showScore();
+        setTimeout(newQ,ok?900:2200);};box.appendChild(b);});}
+  function showScore(){$('qScore').textContent=qs.tot?qs.ok+' de '+qs.tot+' acertos':'';}
+  $('qReset').onclick=function(){qs={ok:0,tot:0};save('quiz',qs);showScore();};
+
+  renderKeys();renderChords();renderLevels();updateEarKey();renderEarAns();newQ();showScore();
 })();
 </script>
 </body>
